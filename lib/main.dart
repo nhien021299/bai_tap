@@ -1,5 +1,7 @@
-import 'package:bai_tap/test.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'splash_screen/SplashScreen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -9,8 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Test(),
+    return GetMaterialApp(
+      theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     );
   }
 }
