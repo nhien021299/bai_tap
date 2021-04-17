@@ -6,11 +6,15 @@ class ProductsPage extends StatelessWidget {
   final int categoryId;
   final List<Products> products;
 
-  const ProductsPage({Key key, this.title, this.products, this.categoryId})
+   ProductsPage({Key key, this.title, this.products, this.categoryId})
       : super(key: key);
+
+  List<Products> list = [];
+
 
   @override
   Widget build(BuildContext context) {
+    products.forEach((e) { if( e.categoryId == categoryId) {list.add(e);}});
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -26,11 +30,9 @@ class ProductsPage extends StatelessWidget {
                 childAspectRatio: 0.8,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10),
-            itemCount: products.length,
+            itemCount: list.length,
             itemBuilder: (BuildContext context, int index) {
-              if (products
-                  .any((element) => element.categoryId == categoryId)) {return buildProducts(index);}
-              return Container();
+             return buildProducts(index);
             },
           ),
         ),
@@ -39,55 +41,54 @@ class ProductsPage extends StatelessWidget {
   }
 
   Widget buildProducts(int index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Container(
-        width: 160,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(70)),
-        child: GestureDetector(
-          onTap: () {},
-          child: GridTile(
-            footer: Container(
-              height: 65,
-              decoration: BoxDecoration(
-                  color: Colors.black26,
-                  borderRadius: BorderRadius.circular(20)),
-              child: ListTile(
-                leading: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Text(
-                    products[index].title,
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Container(
+          width: 160,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(70)),
+          child: GestureDetector(
+            onTap: () {},
+            child: GridTile(
+              footer: Container(
+                height: 65,
+                decoration: BoxDecoration(
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(20)),
+                child: ListTile(
+                  leading: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      list[index].title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  title: Text(
+                    "\$${list[index].price}",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.red,
                     ),
                   ),
                 ),
-                title: Text(
-                  "\$${products[index].price}",
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
-                  ),
-                ),
               ),
-            ),
-            child: Hero(
-              tag: products[index].id,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image(
-                  image: AssetImage(products[index].image),
-                  fit: BoxFit.cover,
+              child: Hero(
+                tag: list[index].id,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    image: AssetImage(list[index].image),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-    );
-    return null;
+      );
   }
 }
