@@ -31,8 +31,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           Get.to(ProductsPage(
             title: categories[index].title,
             categoryId: categories[index].id,
-            products: products
-                .any((element) => element.categoryId == categories[index].id) ? products: null,
+            products: products,
           ));
       },
       child: Padding(

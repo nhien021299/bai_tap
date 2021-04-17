@@ -6,7 +6,8 @@ class ProductsPage extends StatelessWidget {
   final int categoryId;
   final List<Products> products;
 
-  const ProductsPage({Key key, this.title, this.products, this.categoryId}) : super(key: key);
+  const ProductsPage({Key key, this.title, this.products, this.categoryId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,9 @@ class ProductsPage extends StatelessWidget {
                 mainAxisSpacing: 10),
             itemCount: products.length,
             itemBuilder: (BuildContext context, int index) {
-              return buildProducts(index);
+              if (products
+                  .any((element) => element.categoryId == categoryId)) {return buildProducts(index);}
+              return Container();
             },
           ),
         ),
@@ -36,55 +39,55 @@ class ProductsPage extends StatelessWidget {
   }
 
   Widget buildProducts(int index) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Container(
-          width: 160,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(70)),
-          child: GestureDetector(
-            onTap: () {},
-            child: GridTile(
-              footer: Container(
-                height: 65,
-                decoration: BoxDecoration(
-                    color: Colors.black26,
-                    borderRadius: BorderRadius.circular(20)),
-                child: ListTile(
-                  leading: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Text(
-                      products[index].title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  title: Text(
-                    "\$${products[index].price}",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: Container(
+        width: 160,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(70)),
+        child: GestureDetector(
+          onTap: () {},
+          child: GridTile(
+            footer: Container(
+              height: 65,
+              decoration: BoxDecoration(
+                  color: Colors.black26,
+                  borderRadius: BorderRadius.circular(20)),
+              child: ListTile(
+                leading: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    products[index].title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.red,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-              ),
-              child: Hero(
-                tag: products[index].id,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image(
-                    image: AssetImage(products[index].image),
-                    fit: BoxFit.cover,
+                title: Text(
+                  "\$${products[index].price}",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
                   ),
+                ),
+              ),
+            ),
+            child: Hero(
+              tag: products[index].id,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image(
+                  image: AssetImage(products[index].image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
         ),
-      );
+      ),
+    );
     return null;
   }
 }
