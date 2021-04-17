@@ -20,10 +20,7 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
         itemBuilder: (context, index) {
-          if(products[index].type == "fastFood"){
             return productItem(index);
-          }
-          return null;
         },
       ),
     );

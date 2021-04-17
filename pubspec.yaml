@@ -50,12 +50,14 @@ flutter:
   - assets/images/m1.jpeg
   - assets/images/m2.jpg
   - assets/images/w1.jpeg
-  - assets/images/ic_highland.jpg
-  - assets/images/ic_ministop.jpg
-  - assets/images/ic_seven_eleven.png
-  - assets/images/ic_vinmart.png
-  - assets/images/ic_circleK.png
   - assets/images/product_gongcha.jpg
+  - assets/images/bread.jpg
+  - assets/images/coffe.jpg
+  - assets/images/hot_tea.jpg
+  - assets/images/coca.jpg
+  - assets/images/pepsi.jpg
+  - assets/images/hot_dog.jpg
+  - assets/images/hamburger.jpg
   - assets/icons/ic_cold_drink.png
   - assets/icons/ic_fast_food.png
   - assets/icons/ic_hot_drinks.png

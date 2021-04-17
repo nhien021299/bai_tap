@@ -1,6 +1,8 @@
 import 'package:bai_tap/models/categories.dart';
 import 'package:bai_tap/models/products.dart';
+import 'package:bai_tap/products/products_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoriesWidget extends StatefulWidget {
   @override
@@ -26,7 +28,12 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   Widget buildCategory(int index) {
     return GestureDetector(
       onTap: () {
-
+          Get.to(ProductsPage(
+            title: categories[index].title,
+            categoryId: categories[index].id,
+            products: products
+                .any((element) => element.categoryId == categories[index].id) ? products: null,
+          ));
       },
       child: Padding(
         padding: const EdgeInsets.all(16),
