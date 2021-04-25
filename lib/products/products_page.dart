@@ -11,7 +11,6 @@ class ProductsPage extends StatelessWidget {
 
   List<Products> list = [];
 
-
   @override
   Widget build(BuildContext context) {
     products.forEach((e) { if( e.categoryId == categoryId) {list.add(e);}});
