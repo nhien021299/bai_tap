@@ -1,6 +1,7 @@
-
 import 'package:bai_tap/models/products.dart';
+import 'package:bai_tap/ui/products/product_detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PopularProductsWidget extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
         itemBuilder: (context, index) {
-            return productItem(index);
+          return productItem(index);
         },
       ),
     );
@@ -28,7 +29,11 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
 
   Widget productItem(int index) {
     return GestureDetector(
-      onTap: (){},
+      onTap: () => Get.to(
+        ProductDetailPage(
+          products: products[index],
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
@@ -70,7 +75,8 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image(
-                  image: AssetImage(products[index].image), fit: BoxFit.cover,
+                  image: AssetImage(products[index].image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

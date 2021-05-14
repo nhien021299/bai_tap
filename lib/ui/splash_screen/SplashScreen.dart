@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bai_tap/sign_in/sign_in_page.dart';
+import 'package:bai_tap/ui/sign_in/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
 import 'package:bai_tap/models/categories.dart';
 import 'package:bai_tap/models/products.dart';
-import 'package:bai_tap/products/products_page.dart';
+import 'package:bai_tap/ui/products/products_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

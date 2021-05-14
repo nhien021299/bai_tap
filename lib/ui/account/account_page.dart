@@ -1,5 +1,5 @@
-import 'package:bai_tap/widget/input_email_item_widget.dart';
-import 'package:bai_tap/widget/input_password_item_widget.dart';
+import 'package:bai_tap/ui/widgets/input_email_item_widget.dart';
+import 'package:bai_tap/ui/widgets/input_password_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {

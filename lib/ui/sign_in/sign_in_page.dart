@@ -1,7 +1,7 @@
-import 'package:bai_tap/home/main_page.dart';
-import 'package:bai_tap/sign_up/sign_up_page.dart';
-import 'package:bai_tap/widget/input_email_item_widget.dart';
-import 'package:bai_tap/widget/input_password_item_widget.dart';
+import 'package:bai_tap/ui/home/main_page.dart';
+import 'package:bai_tap/ui/sign_up/sign_up_page.dart';
+import 'package:bai_tap/ui/widgets/input_email_item_widget.dart';
+import 'package:bai_tap/ui/widgets/input_password_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
