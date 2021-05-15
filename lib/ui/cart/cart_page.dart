@@ -1,7 +1,9 @@
 import 'package:bai_tap/controller/cart_controller.dart';
 import 'package:bai_tap/models/carts.dart';
 import 'package:bai_tap/models/products.dart';
+import 'package:bai_tap/ui/home/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class CartPage extends StatefulWidget {
@@ -40,17 +42,18 @@ class _CartPageState extends State<CartPage> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                  itemCount: carts.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        buildCartItem(carts[index],index),
-                        Divider()
-                      ],
-                    );
-                  }),
+              child: carts.length != 0
+                  ? ListView.builder(
+                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      itemCount: carts.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [buildCartItem(carts[index], index), Divider()],
+                        );
+                      })
+                  : Center(
+                      child: Text("Cart is empty !"),
+                    ),
             ),
             Row(
               children: [
@@ -58,7 +61,12 @@ class _CartPageState extends State<CartPage> {
                   child: FlatButton(
                     height: 50,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24), side: BorderSide(color: Colors.green)),
-                    onPressed: () {},
+                    onPressed: () {
+                      carts.clear();
+                      cartController.updateCartLength();
+                      Get.to(MainPage());
+                      Fluttertoast.showToast(msg: "Check out success !");
+                    },
                     color: Colors.green,
                     textColor: Colors.white,
                     child: Text("Check out".toUpperCase(), style: TextStyle(fontSize: 14)),
